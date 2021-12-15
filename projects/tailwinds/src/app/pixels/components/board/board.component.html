@@ -1,0 +1,17 @@
+<div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+  <div cdkDropListGroup class="board flex flex-wrap">
+    <div
+      cdkDropList
+      class="box"
+      [cdkDropListData]="num"
+      *ngFor="let num of nums"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let i of num" cdkDrag [cdkDragDisabled]="disableDrag">
+        <img [src]="'assets/pixels/' + i.image" alt="" srcset="" />
+      </div>
+    </div>
+  </div>
+  <h1 *ngIf="winner">Congratulations.. Nice Work</h1>
+  <button (click)="ShuffleImages()">Shuffle</button>
+</div>

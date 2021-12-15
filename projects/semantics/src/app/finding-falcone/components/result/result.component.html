@@ -1,0 +1,44 @@
+<div
+  class="ui container raised segment"
+  [class.err]="resultObj.res.status !== 'success'"
+  [class.succ]="resultObj.res.status === 'success'"
+>
+  <div class="grid sm:grid-cols-2" style="height: calc(100vh - 166px)">
+    <div class="flex" style="margin: 1.24rem">
+      <div class="text-center m-auto">
+        <h1>FINDING FALCONE</h1>
+        <h1>
+          {{ resultObj.res.status === 'success' ? 'SUCCESS' : 'FAILURE' }}
+        </h1>
+
+        <h3>
+          {{ getMessage() }}
+        </h3>
+
+        <h3>Time Taken : {{ resultObj.finalResult.time_taken }}</h3>
+        <h3 *ngIf="resultObj.res.status === 'success'">
+          Planet Found : {{ resultObj.res.planet_name }}
+        </h3>
+        <button class="ui secondary basic button" (click)="reset()">
+          Start Again
+        </button>
+      </div>
+    </div>
+    <div class="flex" style="margin: 1.24rem">
+      <div class="m-auto">
+        <img
+          src="assets/images/king_shan.png"
+          draggable="false"
+          class="img-ks"
+          [ngClass]="{ 'pos-abs': resultObj.res.status === 'success' }"
+        />
+        <img
+          [src]="'assets/images/planets/' + resultObj.res.planet_name + '.png'"
+          [alt]="resultObj.res.planet_name"
+          class="img-planet"
+          *ngIf="resultObj.res.status === 'success'"
+        />
+      </div>
+    </div>
+  </div>
+</div>

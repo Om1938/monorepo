@@ -1,0 +1,7 @@
+<div class="ui {{ class }} dropdown item" #dropdown>
+  <i *ngIf="icon" class="{{ icon }} icon"></i>
+  <div *ngIf="title" class="default text">{{ title }}</div>
+  <div class="menu">
+    <ng-content></ng-content>
+  </div>
+</div>

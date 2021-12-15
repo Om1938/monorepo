@@ -1,0 +1,16 @@
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th *ngFor="let header of tableOption.colDefs">
+        <sem-table-header-col [header]="header"></sem-table-header-col>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of tableRows">
+      <td *ngFor="let cell of tableOption.colDefs">
+        <sem-table-data-cell [cell]="cell"></sem-table-data-cell>
+      </td>
+    </tr>
+  </tbody>
+</table>

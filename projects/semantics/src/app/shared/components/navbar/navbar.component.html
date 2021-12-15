@@ -1,0 +1,39 @@
+<nav class="menubar bg-gray-900">
+  <div class="ui inverted menu container">
+    <a class="item heading"> {{ title }}</a>
+    <ng-container *ngIf="items.leftMenu">
+      <ng-container *ngFor="let item of items.leftMenu">
+        <ng-container *ngIf="!item.children">
+          <a class="item" (click)="clickItem($event, item)">
+            {{ item.title }}
+          </a>
+        </ng-container>
+        <ng-container *ngIf="!!item.children">
+          <sem-nav-dropdown
+            [text]="item.title"
+            [options]="item"
+          ></sem-nav-dropdown>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+
+    <div class="right menu">
+      <ng-container *ngIf="items.rightMenu">
+        <ng-container *ngFor="let item of items.rightMenu">
+          <ng-container *ngIf="!item.children">
+            <a class="item" (click)="clickItem($event, item)">
+              {{ item.title }}
+            </a>
+          </ng-container>
+          <ng-container *ngIf="!!item.children">
+            <sem-nav-dropdown
+              [text]="item.title"
+              [options]="item"
+              direction="left"
+            ></sem-nav-dropdown>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</nav>

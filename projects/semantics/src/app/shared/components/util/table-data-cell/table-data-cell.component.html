@@ -1,0 +1,18 @@
+<ng-container *ngIf="!cell.titleCase">
+  {{ row[cell.field] }}
+</ng-container>
+<ng-container *ngIf="cell.titleCase">
+  {{ row[cell.field] | titlecase }}
+</ng-container>
+
+<ng-container *ngIf="cell.type === 'text'">
+  {{ cell.title }}
+</ng-container>
+<ng-container *ngIf="cell.type === 'select'">
+  <input
+    type="checkbox"
+    [checked]="isAllSelected()"
+    class="checkbox border-gray-300"
+    (click)="SelectAll($event)"
+  />
+</ng-container>

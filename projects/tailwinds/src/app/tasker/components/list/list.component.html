@@ -1,0 +1,127 @@
+<div class="example-container">
+  <!-- List Name -->
+  <div class="flex justify-between">
+    <div class="flex">
+      <!-- List Name -->
+      <ng-container *ngIf="!EditingListName">
+        <h2>{{ list.name }}</h2>
+      </ng-container>
+      <!-- List Edit Box -->
+      <ng-container *ngIf="EditingListName">
+        <input
+          [formControl]="editListNameControl"
+          class="edit-list-name-input w-full mx-1"
+        />
+        <div class="flex flex-nowrap">
+          <button (click)="UpdateListName()" class="w-max mx-1">Update</button>
+          <button class="mx-1" (click)="EditingListName = false">Cancel</button>
+        </div>
+      </ng-container>
+      <!-- List Edit Action Box -->
+      <span
+        *ngIf="!EditingListName"
+        (click)="EditListName()"
+        class="cursor-pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+          />
+        </svg>
+      </span>
+    </div>
+    <div>
+      <!-- Delete -->
+      <span (click)="deleteList()" *ngIf="!EditingListName">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+          />
+        </svg>
+      </span>
+    </div>
+  </div>
+  <!-- List Items -->
+  <div
+    cdkDropList
+    [cdkDropListData]="list.list"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let item of list.list; index as i" cdkDrag>
+      <ng-container *ngIf="Editing == i">
+        <input
+          [formControl]="editTaskControl"
+          class="add-task-input w-full mx-1"
+        />
+        <div class="flex flex-nowrap">
+          <button (click)="Update(i)" class="w-max mx-1">Update</button>
+          <button class="mx-1" (click)="Editing = -1">Cancel</button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!(Editing == i)">
+        {{ item }}
+      </ng-container>
+      <div class="flex" *ngIf="!(Editing == i)">
+        <!-- Edit -->
+        <span (click)="edit(i)" class="cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+            />
+          </svg>
+        </span>
+        <!-- Cross for Delete -->
+        <span (click)="delete(i)" class="cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+
+    <div class="example-box" *ngIf="Adding">
+      <div class="flex w-full">
+        <input
+          [formControl]="addTaskControl"
+          class="add-task-input w-full mx-1"
+        />
+        <div class="flex flex-nowrap">
+          <button (click)="AddTask()" class="w-max mx-1">Add Task</button>
+          <button class="mx-1">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add-new" (click)="Adding = true">+</div>
+</div>

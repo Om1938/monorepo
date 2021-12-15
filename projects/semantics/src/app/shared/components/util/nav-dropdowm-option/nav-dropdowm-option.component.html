@@ -1,0 +1,13 @@
+<ng-container #container>
+  <ng-container *ngIf="!option.children"> {{ option.title }} </ng-container>
+  <ng-container *ngIf="!!option.children">
+    <i class="{{ direction }} dropdown icon"></i>
+    <span class="text">{{ option.title }}</span>
+    <div class="{{ direction }} menu">
+      <sem-nav-dropdowm-option
+        *ngFor="let child of option.children"
+        [option]="child"
+      ></sem-nav-dropdowm-option>
+    </div>
+  </ng-container>
+</ng-container>

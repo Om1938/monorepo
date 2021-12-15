@@ -1,0 +1,66 @@
+<div class="ui raised segment">
+  <a class="ui red ribbon label" *ngIf="currentlySelected"
+    >Distance : {{ currentlySelected.distance }}</a
+  >
+  <a
+    class="ui black bottom attached label"
+    style="margin-top: 0.25rem"
+    *ngIf="timeTaken != 0 && showRadios"
+    >Time Taken : {{ timeTaken }}</a
+  >
+  <div style="margin-top: 0.5rem; margin-bottom: 0.5rem">
+    <app-dropdown
+      title="Select a planet"
+      class="fluid labeled icon button my-2 item"
+      icon="globe"
+      (onChange)="togglePlanet($event)"
+    >
+      <div class="ui icon search input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="Search planets..." />
+      </div>
+      <div class="divider"></div>
+      <div class="header">
+        <i class="globe icon"></i>
+        Available Planets
+      </div>
+
+      <div class="scrolling menu">
+        <ng-container *ngFor="let planet of planets">
+          <div
+            class="item flex"
+            *ngIf="!planet.selected"
+            [attr.data-value]="planet.name"
+          >
+            <img
+              class="ui mini object-contain avatar image"
+              [src]="'assets/icons/planets/' + planet.name + '.ico'"
+            />
+            <span class="truncate">{{ planet.name }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </app-dropdown>
+  </div>
+  <app-choose-vehicle
+    *ngIf="showRadios"
+    [vehicles]="vehicles"
+    [num]="num"
+    [selectedPlanet]="currentlySelected"
+    (selectionChange)="vehicleChange($event)"
+  >
+  </app-choose-vehicle>
+</div>
+
+<!-- <div class="cc-selector-2">
+  <input id="visa2" type="radio" name="creditcard" value="visa" />
+  <label class="drinkcard-cc visa" for="visa2"></label>
+  <input
+    checked="checked"
+    id="mastercard2"
+    type="radio"
+    name="creditcard"
+    value="mastercard"
+  />
+  <label class="drinkcard-cc mastercard" for="mastercard2"></label>
+</div> -->

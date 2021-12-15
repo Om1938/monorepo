@@ -1,0 +1,20 @@
+<div class="flex flex-col min-h-screen">
+  <app-navbar appName="Dashboard"></app-navbar>
+  <main class="flex-grow">
+    <div
+      class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+    >
+      <div class="flex flex-wrap">
+        <div
+          class="max-w-sm rounded overflow-hidden shadow-lg mx-2"
+          *ngFor="let card of cards"
+        >
+          <welcome-card [details]="card" [routerLink]="[card.routerLink]">
+            {{ card.description }}
+          </welcome-card>
+        </div>
+      </div>
+    </div>
+  </main>
+  <app-footer>A Saturday Sunday Project</app-footer>
+</div>

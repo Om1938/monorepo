@@ -1,0 +1,19 @@
+.vehicle {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.block {
+  display: block;
+}
+.veh-label {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}

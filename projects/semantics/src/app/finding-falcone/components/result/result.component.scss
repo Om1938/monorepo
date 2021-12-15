@@ -1,0 +1,27 @@
+.pos-abs {
+  position: absolute;
+}
+.img-ks {
+  width: 30vw;
+}
+
+.img-planet {
+  width: 30vw;
+}
+
+@media (max-width: 639px) {
+  .img-ks {
+    width: 60vw;
+  }
+
+  .img-planet {
+    width: 60vw;
+  }
+}
+
+.ui.err.segment {
+  box-shadow: -1px 0px 15px 2px #db2828;
+}
+.ui.succ.segment {
+  box-shadow: -1px 0px 15px 2px #21ba45;
+}

@@ -1,0 +1,6 @@
+<ng-container *ngIf="!header.type">
+  {{ header.headerName }}
+</ng-container>
+<ng-container *ngIf="header.type && isSelect()">
+  <input type="checkbox" class="checkbox border-gray-300" />
+</ng-container>

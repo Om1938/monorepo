@@ -1,0 +1,373 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "prime-components": {
+      "projectType": "library",
+      "root": "projects/prime-components",
+      "sourceRoot": "projects/prime-components/src",
+      "prefix": "my",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/prime-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/prime-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/prime-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/prime-components/src/test.ts",
+            "tsConfig": "projects/prime-components/tsconfig.spec.json",
+            "karmaConfig": "projects/prime-components/karma.conf.js"
+          }
+        }
+      }
+    },
+    "AdminUI": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/admin-ui",
+      "sourceRoot": "projects/admin-ui/src",
+      "prefix": "aui",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/AdminUI",
+            "index": "projects/admin-ui/src/index.html",
+            "main": "projects/admin-ui/src/main.ts",
+            "polyfills": "projects/admin-ui/src/polyfills.ts",
+            "tsConfig": "projects/admin-ui/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/admin-ui/src/favicon.ico",
+              "projects/admin-ui/src/assets"
+            ],
+            "styles": [
+              "projects/admin-ui/src/styles.scss",
+              {
+                "input": "projects/admin-ui/src/theme-md-dark-deeppurple.scss",
+                "bundleName": "md-dark-deeppurple",
+                "inject": false
+              },
+              {
+                "input": "projects/admin-ui/src/theme-md-light-deeppurple.scss",
+                "bundleName": "md-light-deeppurple",
+                "inject": false
+              },
+              "node_modules/primeicons/primeicons.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/admin-ui/src/environments/environment.ts",
+                  "with": "projects/admin-ui/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "AdminUI:build:production"
+            },
+            "development": {
+              "browserTarget": "AdminUI:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "AdminUI:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/admin-ui/src/test.ts",
+            "polyfills": "projects/admin-ui/src/polyfills.ts",
+            "tsConfig": "projects/admin-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/admin-ui/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/admin-ui/src/favicon.ico",
+              "projects/admin-ui/src/assets"
+            ],
+            "styles": ["projects/admin-ui/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "Tailwinds": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/tailwinds",
+      "sourceRoot": "projects/tailwinds/src",
+      "prefix": "tw",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/Tailwinds",
+            "index": "projects/tailwinds/src/index.html",
+            "main": "projects/tailwinds/src/main.ts",
+            "polyfills": "projects/tailwinds/src/polyfills.ts",
+            "tsConfig": "projects/tailwinds/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/tailwinds/src/favicon.ico",
+              "projects/tailwinds/src/assets"
+            ],
+            "styles": ["projects/tailwinds/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/tailwinds/src/environments/environment.ts",
+                  "with": "projects/tailwinds/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "Tailwinds:build:production"
+            },
+            "development": {
+              "browserTarget": "Tailwinds:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "Tailwinds:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tailwinds/src/test.ts",
+            "polyfills": "projects/tailwinds/src/polyfills.ts",
+            "tsConfig": "projects/tailwinds/tsconfig.spec.json",
+            "karmaConfig": "projects/tailwinds/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/tailwinds/src/favicon.ico",
+              "projects/tailwinds/src/assets"
+            ],
+            "styles": ["projects/tailwinds/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "semantics": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/semantics",
+      "sourceRoot": "projects/semantics/src",
+      "prefix": "sem",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/semantics",
+            "index": "projects/semantics/src/index.html",
+            "main": "projects/semantics/src/main.ts",
+            "polyfills": "projects/semantics/src/polyfills.ts",
+            "tsConfig": "projects/semantics/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/semantics/src/favicon.ico",
+              "projects/semantics/src/assets"
+            ],
+            "styles": [
+              "projects/semantics/src/styles.scss",
+              "node_modules/semantic-ui-css/semantic.min.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/semantic-ui-css/semantic.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/semantics/src/environments/environment.ts",
+                  "with": "projects/semantics/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "semantics:build:production"
+            },
+            "development": {
+              "browserTarget": "semantics:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "semantics:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/semantics/src/test.ts",
+            "polyfills": "projects/semantics/src/polyfills.ts",
+            "tsConfig": "projects/semantics/tsconfig.spec.json",
+            "karmaConfig": "projects/semantics/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/semantics/src/favicon.ico",
+              "projects/semantics/src/assets"
+            ],
+            "styles": ["projects/semantics/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
