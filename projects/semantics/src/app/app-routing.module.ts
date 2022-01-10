@@ -28,6 +28,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin-ui/admin-ui.module').then(m => m.AdminUIModule),
   },
+  { path: 'ccrush', loadChildren: () => import('./candy-crush/candy-crush.module').then(m => m.CandyCrushModule) },
 ];
 
 @NgModule({

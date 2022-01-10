@@ -7,9 +7,10 @@ import { NavDropdowmOptionComponent } from './components/util/nav-dropdowm-optio
 import { TableComponent } from './components/table/table.component';
 import { TableHeaderColComponent } from './components/util/table-header-col/table-header-col.component';
 import { TableDataCellComponent } from './components/util/table-data-cell/table-data-cell.component';
+import { TableSelectCellComponent } from './components/util/table-select-cell/table-select-cell.component';
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, NavDropdownComponent, NavDropdowmOptionComponent, TableComponent, TableHeaderColComponent, TableDataCellComponent],
+  declarations: [NavbarComponent, FooterComponent, NavDropdownComponent, NavDropdowmOptionComponent, TableComponent, TableHeaderColComponent, TableDataCellComponent, TableSelectCellComponent],
   imports: [CommonModule],
   exports: [NavbarComponent, FooterComponent, TableComponent],
 })

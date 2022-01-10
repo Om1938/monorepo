@@ -8,8 +8,18 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of tableRows">
-      <td *ngFor="let cell of tableOption.colDefs">
-        <sem-table-data-cell [cell]="cell"></sem-table-data-cell>
+      <td *ngFor="let cell of tableOption.colDefs" >
+        <sem-table-data-cell
+          [row]="row"
+          [cell]="cell"
+          *ngIf="!isSelect(cell)"
+        ></sem-table-data-cell>
+        <sem-table-select-cell
+          [row]="row"
+          [cell]="cell"
+          *ngIf="isSelect(cell)"
+        ></sem-table-select-cell>
+        <!-- <sem-table-select-cell [row]='row' [cell]="cell"></sem-table-select-cell> -->
       </td>
     </tr>
   </tbody>

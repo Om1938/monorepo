@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableDataCellComponent implements OnInit {
   @Input() cell: any;
+  @Input() row: any;
   constructor() {}
 
   ngOnInit(): void {}
