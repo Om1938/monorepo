@@ -28,6 +28,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./admin-ui/admin-ui.module').then(m => m.AdminUIModule),
   },
+  { path: 'ccrush', loadChildren: () => import('./candy-crush/candy-crush.module').then(m => m.CandyCrushModule) },
+  { path: 'tic-tac-toe', loadChildren: () => import('./tic-tac-toe/tic-tac-toe.module').then(m => m.TicTacToeModule) },
 ];
 
 @NgModule({

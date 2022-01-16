@@ -1,0 +1,11 @@
+<!-- Game Board -->
+
+<div class="board">
+  <div
+    class="tile"
+    [ngStyle]="{ 'background-color': tile }"
+    *ngFor="let tile of board;index as i"
+
+  >{{i}}
+  </div>
+</div>

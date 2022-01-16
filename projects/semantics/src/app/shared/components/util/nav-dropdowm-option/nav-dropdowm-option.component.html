@@ -1,5 +1,10 @@
 <ng-container #container>
-  <ng-container *ngIf="!option.children"> {{ option.title }} </ng-container>
+  <ng-container *ngIf="!option.children"
+    ><span (click)="clickItem($event)">
+      {{ option.title }}
+    </span>
+  </ng-container>
+
   <ng-container *ngIf="!!option.children">
     <i class="{{ direction }} dropdown icon"></i>
     <span class="text">{{ option.title }}</span>
