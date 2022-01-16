@@ -1,0 +1,20 @@
+<div class="ui container flex board-container">
+  <div class="board">
+    <sem-tile
+      [value]="tile"
+      *ngFor="let tile of tiles; index as i"
+      (click)="tileCLick($event, i)"
+    ></sem-tile>
+  </div>
+  <div class="panel">
+    <div class="players">
+      <div>{{ p1.getPlayerName() }} : {{ p1.getScore() }}</div>
+      <div>Tie : {{ ties }}</div>
+      <div>{{ p2.getPlayerName() }} : {{ p2.getScore() }}</div>
+    </div>
+    <div class="flex buttons">
+      <button class="ui button ai">AI</button>
+      <button class="ui button reset" (click)="reset()">Reset</button>
+    </div>
+  </div>
+</div>

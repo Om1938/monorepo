@@ -1,0 +1,13 @@
+$board-width : 525px;
+
+:host{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid black;
+  font-size: $board-width / 3.5;
+  user-select: none;
+
+
+}

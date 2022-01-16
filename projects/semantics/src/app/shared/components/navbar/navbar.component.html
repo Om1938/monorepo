@@ -1,6 +1,8 @@
 <nav class="menubar bg-gray-900">
   <div class="ui inverted menu container">
+
     <a class="item heading"> {{ title }}</a>
+
     <ng-container *ngIf="items.leftMenu">
       <ng-container *ngFor="let item of items.leftMenu">
         <ng-container *ngIf="!item.children">
@@ -35,5 +37,6 @@
         </ng-container>
       </ng-container>
     </div>
+
   </div>
 </nav>

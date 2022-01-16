@@ -1,0 +1,54 @@
+$board-width: 525px;
+
+.board-container {
+  display: flex;
+  flex-direction: row;
+  padding: 3rem;
+
+  .board {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 $board-width;
+    width: $board-width;
+    margin-right: 0.5rem;
+
+    sem-tile {
+      width: calc(100% / 3);
+      height: $board-width / 3;
+    }
+  }
+  .panel {
+    margin-left: 0.5rem;
+    padding: 3rem;
+    border: 1px dashed black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .players {
+      div {
+        font-size: large;
+        margin-top: 10px;
+      }
+      div:first-child {
+        margin-top: 0;
+      }
+    }
+    .buttons {
+      margin: -2.5rem;
+      flex-direction: column;
+
+      button{
+        margin-top: 0.5rem;
+        font-size: large;
+      }
+      button:first-child{
+        margin-top: 0;
+      }
+
+      .reset {
+        background-color: tomato;
+      }
+    }
+  }
+}
